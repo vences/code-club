@@ -1,3 +1,7 @@
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/vences/code-club)
+
+The latest version of that repo can be tested here -> https://code-club.thefrenchy.workers.dev
+
 ## Assignement 1: Respond to POST requests
 
 * After getting Wrangler and Github set up; we’ve seen how to access the URL  property of an incoming request and do conditional logic based on it.
