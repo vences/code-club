@@ -2,6 +2,12 @@
 
 The latest version of that repo can be tested here -> https://code-club.thefrenchy.workers.dev
 
+## Routes
+
+In order to segment assignement I used the following route for each of them:
+- `/a1`: accepting `POST` request
+- `/a2`: accepting `GET` request
+
 ## Assignement 1: Respond to POST requests
 
 * After getting Wrangler and Github set up; we’ve seen how to access the URL  property of an incoming request and do conditional logic based on it.
