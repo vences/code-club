@@ -12,12 +12,20 @@ export default {
 		const path = new URL(request.url).pathname;
 
 		// Routing based on the assignement
-		if (path.startsWith('/a1')) {
-			return assignemet1({request, env, ctx});
-		} else if (path.startsWith('/a2')) {
-			return assignemet2({request, env, ctx});
-		} else if (path.startsWith('/a3')) {
-			return assignemet3({request, env, ctx})
+		try {
+			if (path.startsWith('/a1')) {
+				return assignemet1({request, env, ctx});
+			} else if (path.startsWith('/a2')) {
+				return assignemet2({request, env, ctx});
+			} else if (path.startsWith('/a3')) {
+				return assignemet3({request, env, ctx})
+			}
+		} catch(err) {
+			return jsonResponse({
+				error: JSON.stringify(err) 
+			}, {
+				status: 500
+			})
 		}
 		return jsonResponse('Hello world!')
 	},
