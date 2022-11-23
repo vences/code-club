@@ -25,8 +25,8 @@ export async function assignemet3(context: Context): Promise<Response> {
       status: 200,
     })
   }
-  const url = context.request.url.replace('/a3/','/')
-  
+  const url = context.request.url.replace('/a3/','/httpbin/')
+
   return await fetch(url, {
     headers: context.request.headers,
     cf: {
