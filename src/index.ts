@@ -10,6 +10,7 @@
 
 import { assignemet1 } from "./a1";
 import { assignemet2 } from "./a2";
+import { assignemet3 } from "./a3";
 import { jsonResponse } from "./utils/jsonResponse";
 
 export default {
@@ -25,6 +26,8 @@ export default {
 			return assignemet1({request, env, ctx});
 		} else if (path == '/a2') {
 			return assignemet2({request, env, ctx});
+		} else if (path == '/a3') {
+			return assignemet3({request, env, ctx})
 		}
 		return jsonResponse('Hello world!')
 	},

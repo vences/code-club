@@ -1,12 +1,14 @@
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/vences/code-club)
 
 The latest version of that repo can be tested here -> https://code-club.thefrenchy.workers.dev
+For assignement 3 the workers is now running under -> https://club.vence.fun
 
 ## Routes
 
 In order to segment assignement I used the following route for each of them:
 - `/a1`: accepting `POST` request
 - `/a2`: accepting `GET` request
+- `/a3`: accepting all request
 
 ## Assignement 1: Respond to POST requests
 
@@ -26,3 +28,22 @@ You can see a good example in MDN of the basic idea [here](https://developer.moz
 We also have a quick example of a [lookup table](https://developers.cloudflare.com/workers/examples/country-code-redirect/) in our own documentation.
 
 Using these concepts, update your Hello Worker script to return this random response. You’ll want to copy your project in Github, so that your week 1 assignment is still available for reference. You can use the “import project” feature on the UI, or follow these command line instructions 
+
+## Assignement 3: API, Bots and Cats
+
+We saw the immutability of inbound requests, the available properties of Request.cf, how to create new subrequests, how to create new responses, get and set headers.
+
+
+Create a worker (or expand existing code) to handle automated traffic differently. 
+- Send human traffic to an origin
+- Get additional ‘data’  from https://httpbin.org/get via a subrequest
+- If the inbound request appears automated, always return JSON-formatted responses
+- Use the inbound request data to filter bad bots
+- For bad bots, return a JSON object indicating the request was blocked due to appearing to be non-human. Alternatively, return cats (http.cat/401)
+
+Set an Origin Resolve Override for your subrequest origin. What is the effect?
+
+
+(Optional) If you need an API endpoint in your lab account:
+- Create a CNAME DNS record to petstore3.swagger.io 
+- Set a Page Rule with Host Header Override = “petstore3.swagger.io”
