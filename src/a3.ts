@@ -1,7 +1,7 @@
 import { jsonResponse } from "./utils/jsonResponse";
 
 export async function assignemet3(context: Context): Promise<Response> {
-  if (context.request.cf === undefined) {
+  if (context.request.cf === undefined || context.request.cf.botManagement === undefined) {
     return jsonResponse({
       message: `Context error, your workers is not executed in the right context`,
     }, {
@@ -25,8 +25,9 @@ export async function assignemet3(context: Context): Promise<Response> {
       status: 200,
     })
   }
+  const url = context.request.url.replace('/a3/','/')
   
-  return await fetch(new URL(context.request.url).pathname.replace('/a3/','/'), {
+  return await fetch(url, {
     headers: context.request.headers,
     cf: {
       resolveOverride: 'httpbin.vence.fun',
