@@ -1,13 +1,3 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `wrangler dev src/index.ts` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `wrangler publish src/index.ts --name my-worker` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
-
 import { assignemet1 } from "./a1";
 import { assignemet2 } from "./a2";
 import { assignemet3 } from "./a3";
@@ -22,11 +12,11 @@ export default {
 		const path = new URL(request.url).pathname;
 
 		// Routing based on the assignement
-		if (path == '/a1') {
+		if (path.startsWith('/a1')) {
 			return assignemet1({request, env, ctx});
-		} else if (path == '/a2') {
+		} else if (path.startsWith('/a2')) {
 			return assignemet2({request, env, ctx});
-		} else if (path == '/a3') {
+		} else if (path.startsWith('/a3')) {
 			return assignemet3({request, env, ctx})
 		}
 		return jsonResponse('Hello world!')
