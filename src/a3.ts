@@ -26,7 +26,8 @@ export async function assignemet3(context: Context): Promise<Response> {
     })
   }
   
-  return await fetch(context.request, {
+  return await fetch(new URL(context.request.url).pathname.replace('/a3/','/'), {
+    headers: context.request.headers,
     cf: {
       resolveOverride: 'httpbin.vence.fun',
     }
