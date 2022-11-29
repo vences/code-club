@@ -10,6 +10,8 @@ In order to segment assignement I used the following route for each of them:
 - `/a2`: accepting `GET` request
 - `/a3`: accepting all request
 
+As per the assignement 4, the route now use `itty-router`.
+
 ## Assignement 1: Respond to POST requests
 
 * After getting Wrangler and Github set up; we’ve seen how to access the URL  property of an incoming request and do conditional logic based on it.
@@ -47,3 +49,21 @@ Set an Origin Resolve Override for your subrequest origin. What is the effect?
 (Optional) If you need an API endpoint in your lab account:
 - Create a CNAME DNS record to petstore3.swagger.io 
 - Set a Page Rule with Host Header Override = “petstore3.swagger.io”
+
+## Assignement 4: Router
+
+1. Use the [Worker Router Template](https://github.com/cloudflare/worker-template-router) to create a worker.
+2. Modify the worker in some interesting way 
+3. Use your imagination.  It should be interesting to see what you come up with
+4. Publish the worker to your zone
+
+Here is a snippet from the template’s readme file:
+
+You can use [wrangler](https://github.com/cloudflare/wrangler) to generate a new Cloudflare Workers project based on this template by running the following command from your terminal:
+`wrangler generate myapp https://github.com/cloudflare/worker-template-router`
+
+Before publishing your code you need to edit `wrangler.toml` file and add your Cloudflare `account_id` - more information about configuring and publishing your code can be found [in the documentation](https://developers.cloudflare.com/workers/learning/getting-started#7-configure-your-project-for-deployment).
+
+Once you are ready, you can publish your code by running the following command:
+`wrangler publish`
+
