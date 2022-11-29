@@ -9,20 +9,12 @@ const responseTab = [
   'Response 5', 
 ];
 
-export async function assignemet2(context: Context): Promise<Response> {
+export async function assignemet2(): Promise<Response> {
   const random = getRandomInt(5);
-  const method = context.request.method;
-  if (method == 'GET') {
-    return jsonResponse({
-      message: `${responseTab[random]}`,
-    }, {
-      status: 200,
-    })
-  }
-  
+
   return jsonResponse({
-    message: 'error',
+    message: `${responseTab[random]}`,
   }, {
-    status: 500,
+    status: 200,
   })
 }

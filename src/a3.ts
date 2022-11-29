@@ -1,14 +1,16 @@
 import { jsonResponse } from "./utils/jsonResponse";
 
-export async function assignemet3(context: Context): Promise<Response> {
-  if (context.request.cf === undefined || context.request.cf.botManagement === undefined) {
+// itty-router do not folllow Request specification  
+// Type 'Request' is missing the following properties from type 'Request': clone, headers, redirect, fetcher, and 3 more.ts(2345)
+export async function assignemet3(request: any): Promise<Response> {
+  if (request.cf === undefined || request.cf.botManagement === undefined) {
     return jsonResponse({
       message: `Context error, your workers is not executed in the right context`,
     }, {
       status: 500,
     })
   }
-  const score = context.request.cf.botManagement.score
+  const score = request.cf.botManagement.score
   if (score < 40) {
     const response = await fetch("https://httpbin.org/get");
     if(!response.ok){
@@ -25,10 +27,10 @@ export async function assignemet3(context: Context): Promise<Response> {
       status: 200,
     })
   }
-  const url = context.request.url.replace('/a3/','/httpbin/')
+  const url = request.url.replace('/a3/','/httpbin/')
 
   return await fetch(url, {
-    headers: context.request.headers,
+    headers: request.headers,
     cf: {
       resolveOverride: 'httpbin.vence.fun',
     }
